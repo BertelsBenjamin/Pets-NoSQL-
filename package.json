@@ -1,0 +1,26 @@
+{
+  "name": "petslog",
+  "version": "1.0.0",
+  "description": "pets",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BertelsBenjamin/petslog.git"
+  },
+  "author": "bertels123@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BertelsBenjamin/petslog/issues"
+  },
+  "homepage": "https://github.com/BertelsBenjamin/petslog#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.0",
+    "mysql": "^2.17.1"
+  }
+}
