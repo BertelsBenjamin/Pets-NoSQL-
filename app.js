@@ -1,5 +1,4 @@
-//changes to app.js are displayed on localhost:3000
-//VARIABLES & REQUIREMENTS
+//VARIABLES, FUNCTIONS & REQUIREMENTS
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
@@ -12,13 +11,12 @@ const connection = mysql.createConnection({
     database: 'petslog',
     port: '3307'
 });
-//Make jQuery work in Node (line 5-11)
-var jsdom = require("jsdom");
+const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const { window } = new JSDOM();
 const { document } = (new JSDOM('')).window;
 global.document = document;
-var $ = jQuery = require('jquery')(window);
+const $ = jQuery = require('jquery')(window);
 
 function connectWithDatabase(){
     connection.connect((err) => {
@@ -35,7 +33,6 @@ function connectWithDatabase(){
 
 function queryToDatabase(query){
     connection.query(query, (err, rows) => {
-        res;
         if (err) {
             console.log(err);
             throw err;
@@ -65,6 +62,7 @@ app.use(function (req, res, next) {
     console.log(req);
 });
 
+/*Port watcher (listener) */
 app.listen('3000', () => console.log('app listening on port 3000'));
 
 /*Post something to port 3000 */
