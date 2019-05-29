@@ -32,7 +32,7 @@ function connectWithDatabase(){
 }
 
 function queryToDatabase(query){
-    connection.query(query, (err, rows) => {
+    connection.query(query, (res, err, rows) => {
         if (err) {
             console.log(err);
             throw err;
@@ -51,6 +51,8 @@ function disconnectFromDatabase(){
     });
 }
 
+connectWithDatabase();
+
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -62,22 +64,18 @@ app.use(function (req, res, next) {
     console.log(req);
 });
 
-/*Port watcher (listener) */
-app.listen('3000', () => console.log('app listening on port 3000'));
-
 /*Post something to port 3000 */
 app.get('/', function (req, res) {
     res.send('You have sent this message via res.send in an app.get request in app.js to port 3000');
 })
 
 /*Post received data (based on query) via main.js to index.html (viewable on VS Code Live Server (port 550x)) */
-app.post('/loadTable', urlencode, function (req, res) {
+app.post('/load', urlencode, function (req, res) {
     connectWithDatabase();
-    queryToDatabase("SELECT * FROM event");
+    queryToDatabase('SELECT * FROM pet;');
 })
 
 app.post('/insertRow', (req, res)=>{
-    connectWithDatabase();
     let sql = "INSERT INTO event (reftopet, date, type, remark) VALUES ?";
     let values = [
         [8, '2019-05-21', 'litter', 'broken rib']
@@ -92,5 +90,8 @@ app.post('/insertRow', (req, res)=>{
 app.delete('/', (req, res)=>{
     res.send("Delete");
 })
+
+/*Port watcher (listener) */
+app.listen('3000', () => console.log('app listening on port 3000'));
 
 //disconnectFromDatabase();

@@ -1,9 +1,12 @@
 //changes to index.html, style.css and main.js are displayed on localhost:5000
 (function ($) {
+
+  //VARIABLES & FUNCTIONS
+  let inputArr;
   function loadTable() {
     $.ajax({
       method: "POST",
-      url: "http://localhost:3000/loadTable",
+      url: "http://localhost:3000/load",
     })
       .done(function (msg) {
         msg = JSON.parse(msg);
@@ -32,6 +35,7 @@
     })
       .done(function (msg) {
         console.log(msg);
+        console.log(inputArr);
       });
   }
 
