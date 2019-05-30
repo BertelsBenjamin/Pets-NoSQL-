@@ -76,9 +76,10 @@ app.post('/getTables', urlencode, function (req, res) {
 })
 
 /*Post received data (based on query) via main.js to index.html (viewable on VS Code Live Server (port 550x)) */
-app.post('/load', urlencode, function (req, res) {
+app.post('/load/:selectedTable', urlencode, function (req, res) {
     connectWithDatabase();
-    queryToDatabase('SELECT * FROM event;', req, res);
+    console.log(req.params);
+    queryToDatabase('SELECT * FROM ' + req.params.selectedTable + ';', req, res);
 })
 
 app.post('/insertRow', (req, res) => {
