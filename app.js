@@ -18,7 +18,7 @@ const { document } = (new JSDOM('')).window;
 global.document = document;
 const $ = jQuery = require('jquery')(window);
 
-function connectWithDatabase(){
+function connectWithDatabase() {
     connection.connect((err) => {
         if (err) {
             console.log(err);
@@ -31,8 +31,8 @@ function connectWithDatabase(){
     });
 }
 
-function queryToDatabase(query){
-    connection.query(query, (res, err, rows) => {
+function queryToDatabase(query, req, res) {
+    connection.query(query, (err, rows, fields) => {
         if (err) {
             console.log(err);
             throw err;
@@ -41,11 +41,12 @@ function queryToDatabase(query){
         else {
             console.log('Data received');
             res.send(JSON.stringify(rows));
+            console.log(fields);
         }
     });
 }
 
-function disconnectFromDatabase(){
+function disconnectFromDatabase() {
     connection.end((err) => {
         console.log('Disconnected');
     });
@@ -69,25 +70,30 @@ app.get('/', function (req, res) {
     res.send('You have sent this message via res.send in an app.get request in app.js to port 3000');
 })
 
+app.post('/getTables', urlencode, function (req, res) {
+    connectWithDatabase();
+    queryToDatabase('SHOW TABLES;', req, res);
+})
+
 /*Post received data (based on query) via main.js to index.html (viewable on VS Code Live Server (port 550x)) */
 app.post('/load', urlencode, function (req, res) {
     connectWithDatabase();
-    queryToDatabase('SELECT * FROM pet;');
+    queryToDatabase('SELECT * FROM event;', req, res);
 })
 
-app.post('/insertRow', (req, res)=>{
+app.post('/insertRow', (req, res) => {
     let sql = "INSERT INTO event (reftopet, date, type, remark) VALUES ?";
     let values = [
         [8, '2019-05-21', 'litter', 'broken rib']
     ]
-    connection.query(sql, [values], function (err, result){
+    connection.query(sql, [values], function (err, result) {
         if (err) throw err;
         console.log('Number of records inserted: ' + result.affectedRows);
     })
     res.send("Data inserted.")
 })
 
-app.delete('/', (req, res)=>{
+app.delete('/', (req, res) => {
     res.send("Delete");
 })
 
