@@ -26,98 +26,13 @@
   </head>
 
   <body>
-    <header>
-      <h1 class="heading">The Pet Database</h1>
-    </header>
-    <form class="form-inline-block">
-      <div class="form-group">
-        <label>Table: </label>
-        <select name="tables" class="form-control" id="select-table"></select>
-      </div>
-
-      <div class="form-group">
-        <label class="label">Name: </label>
-        <input
-          class="form-control"
-          placeholder="Name"
-          onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'Name'"
-        />
-      </div>
-
-      <div class="form-group">
-        <label>Owner: </label>
-        <input
-          class="form-control"
-          placeholder="Owner"
-          onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'Owner'"
-        />
-      </div>
-
-      <div class="form-group">
-        <label>Species: </label>
-        <input
-          class="form-control"
-          placeholder="Species"
-          onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'Species'"
-        />
-      </div>
-
-      <div class="form-group">
-        <label>Sex: </label>
-        <input
-          class="form-control"
-          placeholder="Sex"
-          onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'Sex'"
-        />
-      </div>
-
-      <div class="form-group">
-        <label>Birth: </label>
-        <input
-          class="form-control"
-          placeholder="When was your pet born?"
-          onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'Birthday'"
-        />
-      </div>
-
-      <div class="form-group">
-        <label>Death: </label>
-        <input
-          class="form-control"
-          placeholder="When did it die?"
-          onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'Deathday'"
-        />
-      </div>
-
-      <div class="form-group button-group">
-        <button id="btn-insert-row" class="btn btn-outline btn-dark">
-          Insert
-        </button>
-        <button id="btn-refresh-form" class="btn btn-outline btn-dark">
-          Refresh
-        </button>
-        <button id="btn-delete-row" class="btn btn-outline btn-dark">
-          Delete
-        </button>
-      </div>
-    </form>
-    <table id="data" class="table">
-      <thead id="table-head" class="table-head">
-        <tr class="table-header" id="table-header"></tr>
-      </thead>
-      <tbody id="table-body" class="table-body"></tbody>
-    </table>
+    <button id="btn-pets">Get pets</button>
+    <button id="btn-events">Get events</button>
     <script
       src="https://code.jquery.com/jquery-3.3.1.js"
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
       crossorigin="anonymous"
     ></script>
-    <script src="main.js" async defer></script>
+    <script src="./main.js"></script>
   </body>
 </html>

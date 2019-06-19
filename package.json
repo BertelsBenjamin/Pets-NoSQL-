@@ -4,7 +4,8 @@
   "description": "pets",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon ./app.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,10 @@
   "homepage": "https://github.com/BertelsBenjamin/petslog#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.16.4",
-    "jquery": "^3.4.1",
-    "jsdom": "^15.1.0",
-    "mysql": "^2.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.5.15"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
